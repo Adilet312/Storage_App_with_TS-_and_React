@@ -1,4 +1,4 @@
-interface Customer {
+type Customer = {
   fullName: string;
   phoneNumber: string;
   accountBalance: number;
@@ -10,24 +10,40 @@ export default class StorageUnit{
   private width:number;
   private height: number;
   private length: number;
-  private price: number;
+  private price : number;
   private type: UnitType;
-  private customer?: Customer;
-  private date?: Date;
+  private customer?: Customer| null;
+  private date?: Date | null;
 
-  constructor(width: number, height: number, length: number, price: number, type: UnitType, customer?:any, date?:Date){
+  constructor(width: number, height: number, length: number, price: number, type: UnitType, customer:Customer | null, date:Date | null){
     this.width = width;
     this.height = height;
     this.length = length;
     this.price = price;
     this.type = type;
+    console.log("customer!==null",customer===null ? true: false)
     if(customer!==null){
       this.customer = customer;
       this.date = date;
+    }else{
+      this.customer = null;
+      this.date = null;
     }
 
   }
 
+  rentStorageUnit(customer:any,rentedDate:Date):void{
+    this.customer = customer;
+    this.date = rentedDate;
+  }
+
+  releaseStorageUnit():void{
+    this.customer = null;
+    this.date = null;
+  }
+  isRented():boolean{
+    return this.customer!==null ? true : false;
+  }
   setWidth(givenWidth:number):void{
     this.width = givenWidth;
   }
@@ -94,6 +110,7 @@ export default class StorageUnit{
     let description = "";
     description += "Type of Storage Unit: " + this.getUnitType() + ",";
     description += "Dimensions of Storage Unit (WxLxH): " + this.getWidth() + " x " + this.getLength() + " x " + this.getHeight() + ",";
+    description += "Price of Storage Unit: $"+this.getPrice() + ",";
     if (this.customer != null){
         description += "Storage Unit Rented by: "+ this.getCustomer().getFullName() + ",";
         description += "Starting Rental Date: " + this.getDate().toDateString();

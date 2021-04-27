@@ -2,7 +2,7 @@ export default class Customer{
   private fullName: string;
   private phoneNumber: string;
   private accountBalance: number;
-  
+
   constructor(fullName:string, phoneNumber:string, accountBalance:number){
     this.fullName = fullName;
     this.phoneNumber = phoneNumber;
