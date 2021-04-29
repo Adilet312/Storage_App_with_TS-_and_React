@@ -21,7 +21,6 @@ export default class StorageUnit{
     this.length = length;
     this.price = price;
     this.type = type;
-    console.log("customer!==null",customer===null ? true: false)
     if(customer!==null){
       this.customer = customer;
       this.date = date;

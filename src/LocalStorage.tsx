@@ -26,7 +26,17 @@ export default class LocalStorage{
 
     }
   }
-
+  getEmptyStorageUnitsByType(givenType: UnitType):Array<StorageUnit>{
+    const numberOfUnits = [];
+    for( let row = 0; row < this.storageUnits.length; row++){
+      for(let col =0; col < this.storageUnits[0].length; col++){
+        if(givenType===this.storageUnits[row][col].getUnitType() && this.storageUnits[row][col].getCustomer()===null){
+          numberOfUnits.push(this.storageUnits[row][col])
+        }
+      }
+    }
+    return numberOfUnits;
+  }
   chargeMonthlyRent():void{
     for( let row = 0; row < this.storageUnits.length; row++){
       for(let col =0; col < this.storageUnits[0].length; col++){
@@ -37,7 +47,17 @@ export default class LocalStorage{
       }
     }
   }
-
+  getNumberOfUnitsForCustomer(given_customer: Customer):Array<StorageUnit>{
+    const numberOfUnits = [];
+    for( let row = 0; row < this.storageUnits.length; row++){
+      for(let col =0; col < this.storageUnits[0].length; col++){
+        if(given_customer===this.storageUnits[row][col].getCustomer()){
+          numberOfUnits.push(this.storageUnits[row][col])
+        }
+      }
+    }
+    return numberOfUnits;
+  }
   getUnitByIndex(rowIdx:number, colIdx:number):StorageUnit{
     return this.storageUnits[rowIdx][colIdx];
   }
