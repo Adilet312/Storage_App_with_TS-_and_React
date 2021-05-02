@@ -101,5 +101,17 @@ export default class LocalStorage{
     }
     return storageUnitsByType ;
   }
+  getTotalUnits(){
+    return this.storageUnits.length * this.storageUnits[0].length;
+  }
+  toString(){
+    let description = "";
+    description += "Total Inits: " + this.getTotalUnits() + ",\n";
+    description += "Number of Units Available: " + this.findAllUnRentedStorageUnits()+",\n";
+    description += "Number of Standard Units Available: " + this.getEmptyStorageUnitsByType(UnitType.STANDARD) + ",\n";
+    description += "Number of Humidity Controlled Units Available: " + this.getEmptyStorageUnitsByType(UnitType.HUMID_CONTROL) + ",\n";
+    description += "Number of Temperature Controlled Units Available: " + this.getEmptyStorageUnitsByType(UnitType.TEMP_CONTOL) + ",\n";
+    return description;
+  }
 
 }

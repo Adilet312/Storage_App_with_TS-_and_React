@@ -5,29 +5,29 @@ import Customer from './Customer';
 import  StorageUnit from './StorageUnit';
 import LocalStorage from './LocalStorage';
 import { UnitType } from './StorageUnit'
+
+                                    /*Need frontside implementation*/
 const App = () =>{
 
 
-   // const customer1 = new Customer("Adilet Momunaliev","204 300 2343",390);
-   // const customer2 = new Customer("Ajar Momunaliev","204 300 2343",390);
-   // const customer3 = new Customer("Jomart Momunaliev","204 300 2343",390);
-   // const customer4 = new Customer("Lee Momunaliev","204 300 2343",390);
+   const customer1 = new Customer("Adilet Momunaliev","204 300 2343",390);
+   const customer2 = new Customer("Ajar Momunaliev","204 300 2343",390);
+   const customer3 = new Customer("Jomart Momunaliev","204 300 2343",390);
+   const customer4 = new Customer("Lee Momunaliev","204 300 2343",390);
    let localStorages = new LocalStorage();
-   // localStorages.getUnitByIndex(1,3).rentStorageUnit(customer1,new Date)
-   // localStorages.getUnitByIndex(2,3).rentStorageUnit(customer2,new Date)
-   // localStorages.getUnitByIndex(8,3).rentStorageUnit(customer3,new Date)
-   // localStorages.getUnitByIndex(11,3).rentStorageUnit(customer4,new Date)
-   const data = localStorages.findAllUnRentedStorageUnits();
-   let numberOfCustomers = localStorages.getEmptyStorageUnitsByType(UnitType.STANDARD)
+   localStorages.getUnitByIndex(1,3).rentStorageUnit(customer1,new Date)
+   localStorages.getUnitByIndex(2,3).rentStorageUnit(customer2,new Date)
+   localStorages.getUnitByIndex(8,3).rentStorageUnit(customer3,new Date)
+   localStorages.getUnitByIndex(11,3).rentStorageUnit(customer4,new Date)
+   const data = localStorages.toString().split(',');
 
-   // const dataByType = localStorages.findAllStorageUnitsByType(UnitType.TEMP_CONTOL)
-   // const data2 = localStorages.findAllUnRentedStorageUnits();
 
   return(
     <Fragment>
       <ul>
       {
-        data.map( unit => <li>{unit.toString()}</li>)
+         data.map( unit => <li>{unit.toString()}</li>)
+
       }
     </ul>
 
